@@ -1,0 +1,162 @@
+.authWrapper {
+  padding: 3.5rem 1rem 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  position: relative;
+  /* Rich Deep Walnut Desk Canvas with Warm Gold Vignette */
+  background-color: var(--vestige-walnut);
+  background-image: 
+    radial-gradient(ellipse at 50% 15%, rgba(212, 175, 55, 0.18) 0%, transparent 65%),
+    radial-gradient(circle at 50% 85%, rgba(24, 16, 10, 0.95) 0%, transparent 100%);
+}
+
+.authContainer {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+}
+
+.backBar {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vestige-gold-light);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.backLink:hover {
+  color: var(--vestige-cream-pure);
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.formRowBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: 1.5rem;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--vestige-ink-light);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.checkbox {
+  accent-color: var(--vestige-gold-antique);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.textLinkBtn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--vestige-bronze);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.textLinkBtn:hover {
+  color: var(--vestige-walnut);
+}
+
+.actionBlock {
+  margin-top: 0.75rem;
+}
+
+.fullWidthBtn {
+  width: 100%;
+}
+
+.switchAuthBlock {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--vestige-ink-light);
+}
+
+.switchLink {
+  color: var(--vestige-gold-antique);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-left: var(--space-1);
+}
+
+.switchLink:hover {
+  color: var(--vestige-walnut);
+}
+
+.mockBanner {
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--vestige-parchment);
+  border: 1px solid var(--vestige-gold-aged);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.825rem;
+  line-height: 1.45;
+}
+
+.mockBanner p {
+  margin: 0;
+  color: var(--vestige-ink);
+}
+
+.clearanceSeal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(184, 134, 11, 0.12);
+  border: 1px dashed var(--vestige-gold-aged);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vestige-walnut);
+}

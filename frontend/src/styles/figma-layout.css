@@ -1,0 +1,110 @@
+/* ==============================================================================
+   VESTIGE FIGMA AUTO-LAYOUT & FRAME SYSTEM
+   Matches Figma Auto-Layout (Direction, Gap, Padding, Alignment, Resizing)
+   ============================================================================== */
+
+/* --- 1. Figma Auto-Layout Direction --- */
+.figma-stack,
+.figma-layout-v {
+  display: flex;
+  flex-direction: column;
+}
+
+.figma-row,
+.figma-layout-h {
+  display: flex;
+  flex-direction: row;
+}
+
+.figma-wrap {
+  flex-wrap: wrap;
+}
+
+.figma-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* --- 2. Figma Alignment (Primary & Counter Axis) --- */
+.figma-align-start   { align-items: flex-start; }
+.figma-align-center  { align-items: center; }
+.figma-align-end     { align-items: flex-end; }
+.figma-align-stretch { align-items: stretch; }
+.figma-align-baseline{ align-items: baseline; }
+
+.figma-justify-start   { justify-content: flex-start; }
+.figma-justify-center  { justify-content: center; }
+.figma-justify-end     { justify-content: flex-end; }
+.figma-justify-between { justify-content: space-between; }
+.figma-justify-around  { justify-content: space-around; }
+
+/* --- 3. Figma Resizing & Constraints --- */
+.figma-fill {
+  width: 100%;
+  flex: 1 1 0%;
+}
+
+.figma-fill-w {
+  width: 100%;
+}
+
+.figma-fill-h {
+  height: 100%;
+}
+
+.figma-hug {
+  width: max-content;
+  flex: 0 0 auto;
+}
+
+/* --- 4. Figma Auto-Layout Gap Scale --- */
+.figma-gap-0  { gap: 0px; }
+.figma-gap-1  { gap: var(--space-1, 4px); }
+.figma-gap-2  { gap: var(--space-2, 8px); }
+.figma-gap-3  { gap: var(--space-3, 12px); }
+.figma-gap-4  { gap: var(--space-4, 16px); }
+.figma-gap-5  { gap: var(--space-5, 20px); }
+.figma-gap-6  { gap: var(--space-6, 24px); }
+.figma-gap-8  { gap: var(--space-8, 32px); }
+.figma-gap-10 { gap: var(--space-10, 40px); }
+.figma-gap-12 { gap: var(--space-12, 48px); }
+
+/* --- 5. Figma Auto-Layout Padding Scale --- */
+.figma-p-1  { padding: var(--space-1, 4px); }
+.figma-p-2  { padding: var(--space-2, 8px); }
+.figma-p-3  { padding: var(--space-3, 12px); }
+.figma-p-4  { padding: var(--space-4, 16px); }
+.figma-p-5  { padding: var(--space-5, 20px); }
+.figma-p-6  { padding: var(--space-6, 24px); }
+.figma-p-8  { padding: var(--space-8, 32px); }
+
+.figma-px-4 { padding-left: var(--space-4, 16px); padding-right: var(--space-4, 16px); }
+.figma-px-6 { padding-left: var(--space-6, 24px); padding-right: var(--space-6, 24px); }
+.figma-py-4 { padding-top: var(--space-4, 16px); padding-bottom: var(--space-4, 16px); }
+.figma-py-6 { padding-top: var(--space-6, 24px); padding-bottom: var(--space-6, 24px); }
+
+/* --- 6. Figma Standard Frame Presets --- */
+.figma-frame-card {
+  background-color: var(--vestige-cream);
+  border: 1px solid var(--vestige-gold-aged);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-paper-sm);
+  position: relative;
+}
+
+.figma-frame-plaque {
+  background: linear-gradient(180deg, var(--vestige-walnut-light) 0%, var(--vestige-walnut) 100%);
+  border: 1px solid var(--vestige-gold-aged);
+  border-radius: var(--radius-xs);
+  color: var(--vestige-cream-pure);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: var(--shadow-plaque);
+}
+
+.figma-frame-section {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}

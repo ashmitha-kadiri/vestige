@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "vestige-phase5-circular-workflows-v1",
+    "name": "VESTIGE Phase 5 - Core Circular Economy Workflows",
+    "description": "Comprehensive Postman Test Collection for VESTIGE Phase 5. Covers deterministic diagnostic assessments, state-machine validated repair bookings, doorstep e-waste recycling requests, transactional circular reward point accrual, idempotent status retries, and voucher redemptions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "patronToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzN2I3YWVlYS1lNTJlLTQyNWYtYjM2ZS1lMmRjYWQwYWQ5MDUiLCJlbWFpbCI6InVzZXJAdmVzdGlnZS5pbnRlcm5hbCIsInJvbGUiOiJhdXRoZW50aWNhdGVkIn0.signature",
+      "type": "string"
+    },
+    {
+      "key": "vendorToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmNkNDQyNS02ZWZjLTQ4MzUtOGRiNy02ODYyYzliMzg5OGUiLCJlbWFpbCI6InZlbmRvckB2ZXN0aWdlLmludGVybmFsIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQifQ.signature",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjN2M2OGZhNi0wMDRjLTQzZTUtODg2MS02OGExNGVkNWExM2EiLCJlbWFpbCI6ImFkbWluQHZlc3RpZ2UuaW50ZXJuYWwiLCJyb2xlIjoiYXV0aGVudGljYXRlZCJ9.signature",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01. Diagnostics & Decision Engine",
+      "item": [
+        {
+          "name": "Evaluate Device - Viable for Repair (Expect REPAIR, Score >= 50)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{patronToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceType\": \"LAPTOP\",\n  \"brand\": \"Lenovo\",\n  \"model\": \"ThinkPad T480\",\n  \"deviceAgeYears\": 3,\n  \"condition\": \"GOOD\",\n  \"estimatedRepairCost\": 3500.00,\n  \"originalValue\": 65000.00,\n  \"partAvailability\": \"AVAILABLE\",\n  \"knownIssues\": [\"Keyboard key stuck\", \"Battery renewal\"]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/devices/assess", "host": ["{{baseUrl}}"], "path": ["devices", "assess"] }
+          }
+        },
+        {
+          "name": "Evaluate Device - Economically Non-viable (Expect RECYCLE, Score < 50)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{patronToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceType\": \"SMARTPHONE\",\n  \"brand\": \"Generic\",\n  \"model\": \"Vintage 2012\",\n  \"deviceAgeYears\": 12,\n  \"condition\": \"POOR\",\n  \"estimatedRepairCost\": 8000.00,\n  \"originalValue\": 10000.00,\n  \"partAvailability\": \"UNAVAILABLE\",\n  \"knownIssues\": [\"Water damage\", \"Motherboard short\"]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/devices/assess", "host": ["{{baseUrl}}"], "path": ["devices", "assess"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. Hardware Restoration (Repair) Workflow",
+      "item": [
+        {
+          "name": "Create Repair Booking (PENDING)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{patronToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vendorId\": \"f2cd4425-6efc-4835-8db7-6862c9b3898e\",\n  \"submissionId\": \"37b7aeea-e52e-425f-b36e-e2dcad0ad905\",\n  \"preferredDate\": \"2026-09-05\",\n  \"preferredTime\": \"14:30:00\",\n  \"issueDescription\": \"Thermal paste reapplication and display hinge adjustment\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/repairs", "host": ["{{baseUrl}}"], "path": ["repairs"] }
+          }
+        },
+        {
+          "name": "Vendor Accepts Repair Booking (PENDING -> ACCEPTED)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{vendorToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"ACCEPTED\",\n  \"notes\": \"Workbench allocated for diagnostic inspection on scheduled date.\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/repairs/37b7aeea-e52e-425f-b36e-e2dcad0ad905/status", "host": ["{{baseUrl}}"], "path": ["repairs", "37b7aeea-e52e-425f-b36e-e2dcad0ad905", "status"] }
+          }
+        },
+        {
+          "name": "Vendor Starts Repair (ACCEPTED -> IN_PROGRESS)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{vendorToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"IN_PROGRESS\",\n  \"notes\": \"Disassembly and micro-soldering in progress.\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/repairs/37b7aeea-e52e-425f-b36e-e2dcad0ad905/status", "host": ["{{baseUrl}}"], "path": ["repairs", "37b7aeea-e52e-425f-b36e-e2dcad0ad905", "status"] }
+          }
+        },
+        {
+          "name": "Vendor Completes Repair (IN_PROGRESS -> COMPLETED, Credits 100 PTS)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{vendorToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"COMPLETED\",\n  \"notes\": \"Hardware restored to working order. Diagnostic benchmark passed.\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/repairs/37b7aeea-e52e-425f-b36e-e2dcad0ad905/status", "host": ["{{baseUrl}}"], "path": ["repairs", "37b7aeea-e52e-425f-b36e-e2dcad0ad905", "status"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. Ethical E-Waste Recycling Workflow",
+      "item": [
+        {
+          "name": "Schedule Doorstep Recycling Pickup",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{patronToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vendorId\": \"f2cd4425-6efc-4835-8db7-6862c9b3898e\",\n  \"pickupAddress\": \"Flat 304, Heritage Apartments, 12th Cross, Indiranagar, Bengaluru\",\n  \"pickupDate\": \"2026-09-02\",\n  \"pickupTime\": \"10:00:00\",\n  \"deviceCount\": 2\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/recycling", "host": ["{{baseUrl}}"], "path": ["recycling"] }
+          }
+        },
+        {
+          "name": "Logistics Partner Confirms Collection (SCHEDULED -> COMPLETED, Credits 100 PTS)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{vendorToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"COMPLETED\",\n  \"pointsToAward\": 100,\n  \"notes\": \"Two vintage device parcels collected for certified zero-landfill dismantling.\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/recycling/37b7aeea-e52e-425f-b36e-e2dcad0ad905/status", "host": ["{{baseUrl}}"], "path": ["recycling", "37b7aeea-e52e-425f-b36e-e2dcad0ad905", "status"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. Rewards & Voucher Redemption",
+      "item": [
+        {
+          "name": "Get Patron Reward Account Balance",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{patronToken}}" }],
+            "url": { "raw": "{{baseUrl}}/rewards/account", "host": ["{{baseUrl}}"], "path": ["rewards", "account"] }
+          }
+        },
+        {
+          "name": "Redeem Workshop Voucher (Checks Balance >= 200)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{patronToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rewardItem\": \"₹500 Circular Workshop Voucher\",\n  \"points\": 200,\n  \"deliveryNotes\": \"Instant electronic voucher code issued.\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/rewards/redeem", "host": ["{{baseUrl}}"], "path": ["rewards", "redeem"] }
+          }
+        },
+        {
+          "name": "Inspect Immutable Transaction Audit Ledger",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{patronToken}}" }],
+            "url": { "raw": "{{baseUrl}}/rewards/transactions", "host": ["{{baseUrl}}"], "path": ["rewards", "transactions"] }
+          }
+        }
+      ]
+    }
+  ]
+}

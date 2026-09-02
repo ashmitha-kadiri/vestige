@@ -1,0 +1,171 @@
+{
+  "info": {
+    "_postman_id": "vestige-phase6-analytics-insights-v1",
+    "name": "VESTIGE Phase 6 - Analytics & Insights",
+    "description": "Comprehensive Postman Test Collection for VESTIGE Phase 6. Covers strictly read-only role-aware analytics endpoints for Platform Administrators (overview, devices, repairs, recycling, rewards, vendor workloads), Workshop Craftsmen (assigned workflows, completion rates), and Device Patrons (sustainability scorecard, circular journey timeline).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjN2M2OGZhNi0wMDRjLTQzZTUtODg2MS02OGExNGVkNWExM2EiLCJlbWFpbCI6ImFkbWluQHZlc3RpZ2UuaW50ZXJuYWwiLCJyb2xlIjoiYXV0aGVudGljYXRlZCJ9.signature",
+      "type": "string"
+    },
+    {
+      "key": "vendorToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmNkNDQyNS02ZWZjLTQ4MzUtOGRiNy02ODYyYzliMzg5OGUiLCJlbWFpbCI6InZlbmRvckB2ZXN0aWdlLmludGVybmFsIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQifQ.signature",
+      "type": "string"
+    },
+    {
+      "key": "patronToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzN2I3YWVlYS1lNTJlLTQyNWYtYjM2ZS1lMmRjYWQwYWQ5MDUiLCJlbWFpbCI6InVzZXJAdmVzdGlnZS5pbnRlcm5hbCIsInJvbGUiOiJhdXRoZW50aWNhdGVkIn0.signature",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01. Platform Administrator Analytics (ROLE_ADMIN)",
+      "item": [
+        {
+          "name": "Platform Overview KPIs (Default Range)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "overview"] }
+          }
+        },
+        {
+          "name": "Platform Overview KPIs (Custom Date Range)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/analytics/admin/overview?from=2026-01-01&to=2026-12-31",
+              "host": ["{{baseUrl}}"],
+              "path": ["analytics", "admin", "overview"],
+              "query": [
+                { "key": "from", "value": "2026-01-01" },
+                { "key": "to", "value": "2026-12-31" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Device Diagnostics & Categories Distribution",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/devices", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "devices"] }
+          }
+        },
+        {
+          "name": "Repair Workflows & Velocity Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/repairs", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "repairs"] }
+          }
+        },
+        {
+          "name": "Recycling Requests & Landfill Diversion Metrics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/recycling", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "recycling"] }
+          }
+        },
+        {
+          "name": "Circular Rewards Issuance & Ledger Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/rewards", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "rewards"] }
+          }
+        },
+        {
+          "name": "Craftsman Workshop Workload Table",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/vendors", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "vendors"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. Craftsman Workshop Analytics (ROLE_VENDOR)",
+      "item": [
+        {
+          "name": "Craftsman Own Workbench Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{vendorToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/vendor/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "vendor", "overview"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. Patron Sustainability Scorecard (ROLE_USER)",
+      "item": [
+        {
+          "name": "Patron Environmental Impact & Activity Timeline",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{patronToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/user/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "user", "overview"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. Security & Role Authorization Guards",
+      "item": [
+        {
+          "name": "Patron Accessing Admin Overview (Expect 403 Forbidden)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{patronToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "overview"] }
+          }
+        },
+        {
+          "name": "Craftsman Accessing Admin Overview (Expect 403 Forbidden)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{vendorToken}}" }],
+            "url": { "raw": "{{baseUrl}}/analytics/admin/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "admin", "overview"] }
+          }
+        },
+        {
+          "name": "Unauthenticated Request to Analytics (Expect 401 Unauthorized)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/analytics/user/overview", "host": ["{{baseUrl}}"], "path": ["analytics", "user", "overview"] }
+          }
+        },
+        {
+          "name": "Invalid Date Range Query (from after to - Expect 400 Bad Request)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/analytics/admin/overview?from=2026-12-31&to=2026-01-01",
+              "host": ["{{baseUrl}}"],
+              "path": ["analytics", "admin", "overview"],
+              "query": [
+                { "key": "from", "value": "2026-12-31" },
+                { "key": "to", "value": "2026-01-01" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

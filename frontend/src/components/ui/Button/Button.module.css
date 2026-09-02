@@ -1,0 +1,74 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-espresso);
+  color: var(--color-parchment);
+  border: 1px solid var(--color-antique-gold-dark);
+  box-shadow: var(--shadow-warm-sm);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-walnut);
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-warm-md);
+}
+
+.secondary {
+  background-color: var(--color-aged-ivory);
+  color: var(--color-espresso);
+  border: 1px solid var(--color-sepia-mid);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-parchment);
+  border-color: var(--color-walnut);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-espresso);
+  border: 1px solid var(--color-sepia-mid);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: rgba(200, 169, 126, 0.2);
+  border-color: var(--color-espresso);
+}
+
+/* Sizes */
+.sm {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}
+
+.md {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.lg {
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

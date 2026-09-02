@@ -1,0 +1,39 @@
+.container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+.card {
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.numeral {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--vestige-bronze, #7A542E);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-family: var(--font-body, 'Lora', serif);
+  font-size: 1.05rem;
+  color: var(--vestige-ink-light, #5C4A3E);
+  line-height: 1.6;
+  margin: 1.25rem 0 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

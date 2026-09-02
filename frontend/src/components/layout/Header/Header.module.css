@@ -1,0 +1,164 @@
+.header {
+  background-color: var(--vestige-parchment, #F7ECD7);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 0.75rem 0;
+  transition: background-color var(--transition-base, 0.3s ease);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4, 1rem);
+}
+
+.brandLink {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-body, 'Lora', serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--vestige-ink, #2B1F16);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.navLink:hover {
+  color: var(--vestige-bronze, #7A542E);
+}
+
+.navLinkActive {
+  color: var(--vestige-walnut, #2B1B12);
+  font-weight: 700;
+}
+
+.activeBar {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background-color: var(--vestige-bronze, #7A542E);
+  border-radius: 2px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.authGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.4rem;
+  border: 1.5px solid var(--vestige-walnut, #2B1B12);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--vestige-walnut, #2B1B12);
+  font-family: var(--font-body, 'Lora', serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.btnOutline:hover {
+  background-color: rgba(43, 27, 18, 0.08);
+  transform: translateY(-1px);
+}
+
+.btnSolid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.4rem;
+  border: 1.5px solid #20140D;
+  border-radius: 6px;
+  background-color: #20140D;
+  color: #FAF4E8;
+  font-family: var(--font-body, 'Lora', serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(32, 20, 13, 0.25);
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.btnSolid:hover {
+  background-color: #2E1E14;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(32, 20, 13, 0.35);
+}
+
+.roleTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  background-color: rgba(196, 154, 69, 0.2);
+  border: 1px solid var(--vestige-gold-aged, #C49A45);
+  border-radius: 4px;
+  color: var(--vestige-walnut, #2B1B12);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.langSelectorWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.langSelect {
+  font-family: var(--font-body, 'Lora', serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vestige-walnut, #2B1B12);
+  background-color: var(--vestige-parchment-light, #FAF4E8);
+  border: 1px solid var(--vestige-bronze-light, #A07850);
+  border-radius: 4px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.langSelect:hover, .langSelect:focus {
+  border-color: var(--vestige-gold-aged, #C49A45);
+  box-shadow: 0 0 0 2px rgba(196, 154, 69, 0.2);
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+}

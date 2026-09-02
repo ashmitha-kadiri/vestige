@@ -1,0 +1,12 @@
+.formField {
+  margin-bottom: var(--space-4);
+  width: 100%;
+}
+
+.helpText {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  font-style: italic;
+}

@@ -1,0 +1,76 @@
+/* ==============================================================================
+   VESTIGE TYPOGRAPHY UTILITIES
+   ============================================================================== */
+
+.font-heading-display {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--line-height-tight);
+}
+
+.font-heading-hero {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.2;
+}
+
+.font-heading-section {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+}
+
+.font-heading-card {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+}
+
+.font-subheading {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.font-body-regular {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+}
+
+.font-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.font-ui-label {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.font-accent-quote {
+  font-family: var(--font-accent);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--vestige-gold-dark);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.05em;
+}

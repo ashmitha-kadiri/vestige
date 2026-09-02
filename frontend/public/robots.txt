@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /portals
+Allow: /login/
+Allow: /register/
+
+Disallow: /admin/
+Disallow: /vendor/
+Disallow: /user/

@@ -1,0 +1,68 @@
+.pageWrapper {
+  padding: 2.5rem 0 5rem;
+}
+
+.platesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.actionCard {
+  background-color: var(--vestige-ivory);
+  border: 1px solid var(--vestige-parchment-border);
+  border-radius: var(--radius-xs);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-paper-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+  position: relative;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.actionCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-paper-md), 0 0 16px rgba(176, 141, 87, 0.2);
+  border-color: var(--vestige-brass);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardHead h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--vestige-espresso);
+  margin: 0;
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--vestige-ink-light);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .platesGrid {
+    grid-template-columns: 1fr;
+  }
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

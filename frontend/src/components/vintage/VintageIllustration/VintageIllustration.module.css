@@ -1,0 +1,9 @@
+.illustration {
+  display: inline-block;
+  vertical-align: middle;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  flex-shrink: 0;
+}

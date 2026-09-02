@@ -1,0 +1,44 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 140px;
+  max-width: 220px;
+}
+
+.iconBox {
+  position: absolute;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--vestige-brass-dark);
+}
+
+.select {
+  width: 100%;
+  padding: 6px 12px 6px 30px;
+  background-color: var(--vestige-parchment-light);
+  color: var(--vestige-espresso);
+  border: 1px solid var(--vestige-parchment-border);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(43, 31, 22, 0.05);
+  appearance: auto;
+  transition: all var(--transition-fast);
+}
+
+.select:hover {
+  border-color: var(--vestige-brass);
+  background-color: var(--vestige-ivory);
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--vestige-brass);
+  outline-offset: 1px;
+}

@@ -1,0 +1,52 @@
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: var(--space-6) 0;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.flourish {
+  padding: 0 var(--space-4);
+  font-family: var(--font-accent);
+  font-size: var(--font-size-md);
+  color: var(--vestige-gold);
+  line-height: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Variants */
+.gold::before,
+.gold::after {
+  border-bottom: 1px solid var(--color-border-medium);
+}
+
+.gold .flourish {
+  color: var(--vestige-gold);
+}
+
+.subtle::before,
+.subtle::after {
+  border-bottom: 1px dotted var(--color-border-subtle);
+}
+
+.subtle .flourish {
+  color: var(--color-text-muted);
+}
+
+.dark::before,
+.dark::after {
+  border-bottom: 1px solid rgba(176, 138, 74, 0.4);
+}
+
+.dark .flourish {
+  color: var(--vestige-gold-light);
+}

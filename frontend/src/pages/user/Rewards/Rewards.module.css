@@ -1,0 +1,204 @@
+.pageWrapper {
+  padding: var(--space-8) 0 var(--space-16);
+}
+
+.backBar {
+  margin-bottom: var(--space-6);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--vestige-sepia-mid);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: var(--vestige-gold-dark);
+}
+
+/* Balance Hero Card */
+.balanceCard {
+  background: var(--vestige-aged-ivory);
+  border: 2px solid var(--vestige-gold-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-ledger);
+  margin-bottom: var(--space-8);
+}
+
+.balanceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-6);
+  text-align: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .balanceGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.metricBlock {
+  padding: var(--space-4);
+  border-right: 1px dashed var(--vestige-sepia-light);
+}
+
+.metricBlock:last-child {
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  .metricBlock {
+    border-right: none;
+    border-bottom: 1px dashed var(--vestige-sepia-light);
+  }
+  .metricBlock:last-child {
+    border-bottom: none;
+  }
+}
+
+.metricValue {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-4xl);
+  font-weight: bold;
+  color: var(--vestige-espresso);
+  margin-top: var(--space-2);
+}
+
+.metricLabel {
+  font-family: var(--font-display);
+  font-size: var(--font-size-sm);
+  color: var(--vestige-walnut);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.catalogCard {
+  background: var(--vestige-parchment-light);
+  border: 1px solid var(--vestige-sepia-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.catalogCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--vestige-gold);
+  box-shadow: var(--shadow-elevated);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.cardCost {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--vestige-gold-dark);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  color: var(--vestige-espresso);
+  margin-bottom: var(--space-2);
+}
+
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--vestige-walnut);
+  margin-bottom: var(--space-6);
+}
+
+/* Redemptions & Transactions tables */
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: var(--space-4);
+  background: var(--vestige-aged-ivory);
+  border: 1px solid var(--vestige-sepia-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+}
+
+.ledgerTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+}
+
+.ledgerTable th {
+  background-color: var(--vestige-parchment);
+  color: var(--vestige-walnut);
+  font-family: var(--font-display);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  padding: var(--space-4);
+  border-bottom: 2px solid var(--vestige-sepia-light);
+}
+
+.ledgerTable td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--vestige-sepia-light);
+  color: var(--vestige-espresso);
+}
+
+.ledgerTable tr:last-child td {
+  border-bottom: none;
+}
+
+.emptyLedger {
+  text-align: center;
+  padding: var(--space-10);
+  color: var(--vestige-sepia-mid);
+  font-style: italic;
+}
+
+.alertBox {
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+}
+
+.alertSuccess {
+  background-color: rgba(58, 92, 58, 0.12);
+  border: 1px solid var(--vestige-moss);
+  color: var(--vestige-moss);
+}
+
+.alertError {
+  background-color: rgba(139, 46, 26, 0.1);
+  border: 1px solid var(--vestige-rust);
+  color: var(--vestige-rust);
+}

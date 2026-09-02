@@ -1,0 +1,380 @@
+{
+  "info": {
+    "_postman_id": "vestige-phase4-auth-collection-v1",
+    "name": "VESTIGE Phase 4 - Authentication & Role-Based Authorization",
+    "description": "Comprehensive Postman Test Collection for VESTIGE Phase 4. Covers identity verification, public/protected route gating, RBAC restrictions, fine-grained ownership enforcement, account suspension, vendor verification gating, and immutable audit logs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "userToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzN2I3YWVlYS1lNTJlLTQyNWYtYjM2ZS1lMmRjYWQwYWQ5MDUiLCJlbWFpbCI6InVzZXJAdmVzdGlnZS5pbnRlcm5hbCIsInJvbGUiOiJhdXRoZW50aWNhdGVkIn0.signature",
+      "type": "string"
+    },
+    {
+      "key": "otherUserToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5OTk5OTk5OS05OTk5LTk5OTktOTk5OS05OTk5OTk5OTk5OTkiLCJlbWFpbCI6Im90aGVyQHZlc3RpZ2UuaW50ZXJuYWwiLCJyb2xlIjoiYXV0aGVudGljYXRlZCJ9.signature",
+      "type": "string"
+    },
+    {
+      "key": "unverifiedVendorToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmNkNDQyNS02ZWZjLTQ4MzUtOGRiNy02ODYyYzliMzg5OGUiLCJlbWFpbCI6InZlbmRvckB2ZXN0aWdlLmludGVybmFsIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQifQ.signature",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjN2M2OGZhNi0wMDRjLTQzZTUtODg2MS02OGExNGVkNWExM2EiLCJlbWFpbCI6ImFkbWluQHZlc3RpZ2UuaW50ZXJuYWwiLCJyb2xlIjoiYXV0aGVudGljYXRlZCJ9.signature",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01. Public Endpoints",
+      "item": [
+        {
+          "name": "Health Check (Public - No Token Required)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reward Catalog (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/rewards/catalog",
+              "host": ["{{baseUrl}}"],
+              "path": ["rewards", "catalog"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02. Registration & Identity",
+      "item": [
+        {
+          "name": "Register User Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Eleanor Vance\",\n  \"phone\": \"+919876543210\",\n  \"preferredLanguage\": \"en\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register", "user"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Vendor Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{unverifiedVendorToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Master Rajesh Sharma\",\n  \"phone\": \"+919888877770\",\n  \"preferredLanguage\": \"en\",\n  \"businessName\": \"Bangalore Precision Electronics Atelier\",\n  \"businessType\": \"Certified Repair Workshop\",\n  \"address\": \"42 Heritage Avenue\",\n  \"city\": \"Bengaluru\",\n  \"state\": \"Karnataka\",\n  \"pincode\": \"560001\",\n  \"serviceTypes\": [\"REPAIR\", \"RECYCLING\"],\n  \"deviceCategories\": [\"SMARTPHONE\", \"LAPTOP\"],\n  \"documentUrl\": \"https://example.com/certs/license.pdf\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register/vendor",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register", "vendor"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Authenticated Identity Profile (/auth/me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03. RBAC & Access Restrictions",
+      "item": [
+        {
+          "name": "Access Protected Route With No Token (Expect 401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Accesses Admin Endpoint (Expect 403 Forbidden)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin Accesses Admin Endpoint (Expect 200 OK)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "users"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04. Fine-Grained Ownership Enforcement",
+      "item": [
+        {
+          "name": "User Accesses Own Rewards Account (Expect 200 OK)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rewards/account/37b7aeea-e52e-425f-b36e-e2dcad0ad905",
+              "host": ["{{baseUrl}}"],
+              "path": ["rewards", "account", "37b7aeea-e52e-425f-b36e-e2dcad0ad905"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Accesses Another User's Rewards Account (Expect 403 Forbidden)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{otherUserToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rewards/account/37b7aeea-e52e-425f-b36e-e2dcad0ad905",
+              "host": ["{{baseUrl}}"],
+              "path": ["rewards", "account", "37b7aeea-e52e-425f-b36e-e2dcad0ad905"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin Accesses Any User's Rewards Account (Expect 200 OK)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rewards/account/37b7aeea-e52e-425f-b36e-e2dcad0ad905",
+              "host": ["{{baseUrl}}"],
+              "path": ["rewards", "account", "37b7aeea-e52e-425f-b36e-e2dcad0ad905"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05. Vendor Verification Gating & Administration",
+      "item": [
+        {
+          "name": "Admin Lists Pending Vendors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/vendors/pending",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "vendors", "pending"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin Verifies & Approves Vendor Partner",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"APPROVE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/vendors/f2cd4425-6efc-4835-8db7-6862c9b3898e/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "vendors", "f2cd4425-6efc-4835-8db7-6862c9b3898e", "verify"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06. Account Moderation & Audit Log",
+      "item": [
+        {
+          "name": "Admin Suspends User Account",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": false,\n  \"reason\": \"Institutional compliance investigation\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/users/37b7aeea-e52e-425f-b36e-e2dcad0ad905/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "users", "37b7aeea-e52e-425f-b36e-e2dcad0ad905", "status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin Provisions New Platform Administrator",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetUserId\": \"37b7aeea-e52e-425f-b36e-e2dcad0ad905\",\n  \"adminNotes\": \"Appointed as Lead Compliance Officer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/admin/provision",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "admin", "provision"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retrieve Institutional Audit Trail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/actions",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "actions"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

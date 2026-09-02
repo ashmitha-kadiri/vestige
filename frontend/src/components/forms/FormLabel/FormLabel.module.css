@@ -1,0 +1,16 @@
+.label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--vestige-espresso);
+  margin-bottom: var(--space-2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.required {
+  color: var(--vestige-rust);
+  font-weight: bold;
+  margin-left: 2px;
+}

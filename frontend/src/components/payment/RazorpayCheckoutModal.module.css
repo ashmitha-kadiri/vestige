@@ -1,0 +1,179 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 20, 15, 0.82);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.modal {
+  background: var(--vestige-ivory);
+  border: 1.5px solid var(--vestige-brass);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 2px var(--vestige-parchment-light);
+  border-radius: var(--radius-xs);
+  max-width: 480px;
+  width: 100%;
+  padding: 2.25rem 2rem;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--vestige-ink-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  color: var(--vestige-espresso);
+}
+
+.header {
+  border-bottom: 1px solid var(--vestige-parchment-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-heading);
+  color: var(--vestige-espresso);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  color: var(--vestige-ink-light);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.billSummary {
+  background: var(--vestige-parchment-light);
+  border: 1px dashed var(--vestige-brass);
+  border-radius: var(--radius-xs);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.billRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--vestige-ink);
+}
+
+.billTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--vestige-parchment-border);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--vestige-espresso);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(74, 83, 62, 0.12);
+  border: 1px solid var(--vestige-olive);
+  color: var(--vestige-olive-dark);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.8rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.payBtn {
+  flex: 1;
+  background: var(--vestige-espresso);
+  color: var(--vestige-ivory);
+  border: 1px solid var(--vestige-brass);
+  padding: 0.85rem 1.25rem;
+  font-weight: 700;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-paper-sm), inset 0 0 0 1px rgba(176, 141, 87, 0.4);
+  transition: all var(--transition-fast);
+}
+
+.payBtn:hover:not(:disabled) {
+  background: var(--vestige-espresso-light);
+  color: #FFFDF7;
+  border-color: var(--vestige-brass-light);
+  transform: translateY(-1px);
+}
+
+.payBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: var(--vestige-parchment-light);
+  border: 1px solid var(--vestige-parchment-border);
+  color: var(--vestige-ink-light);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: var(--vestige-parchment);
+  color: var(--vestige-ink);
+}
+
+.statusMessage {
+  padding: 0.75rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+}
+
+.statusSuccess {
+  background: rgba(62, 92, 67, 0.15);
+  border: 1px solid var(--vestige-moss);
+  color: var(--vestige-moss);
+  font-weight: bold;
+}
+
+.statusError {
+  background: rgba(139, 46, 26, 0.15);
+  border: 1px solid var(--vestige-rust);
+  color: var(--vestige-rust);
+}

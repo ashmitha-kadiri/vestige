@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+  font-weight: 500;
+}
+
+.bullet {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+}

@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 909dd068-6683-4985-8479-8f27d11c49e5
+
+localResources:
+  collections:
+    - ../docs/api/VESTIGE_Phase4_Auth_Postman_Collection.json

@@ -1,0 +1,41 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 3px 9px;
+  font-family: var(--font-ui);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--vestige-gold-aged);
+  background-color: var(--vestige-cream);
+  color: var(--vestige-walnut);
+  box-shadow: 0 1px 2px rgba(43, 27, 18, 0.06);
+}
+
+.success, .verified, .completed {
+  background-color: rgba(104, 112, 74, 0.15);
+  color: var(--vestige-olive-dark);
+  border-color: var(--vestige-olive);
+}
+
+.warning, .pending, .in_progress {
+  background-color: rgba(184, 134, 11, 0.14);
+  color: #7A542E;
+  border-color: var(--vestige-gold-antique);
+}
+
+.error, .cancelled, .rejected {
+  background-color: rgba(138, 46, 28, 0.12);
+  color: var(--vestige-rust);
+  border-color: var(--vestige-rust-light);
+}
+
+.gold, .premium, .archival {
+  background: linear-gradient(180deg, var(--vestige-walnut) 0%, var(--vestige-walnut-dark) 100%);
+  color: var(--vestige-gold-light);
+  border-color: var(--vestige-gold-royal);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.25);
+}

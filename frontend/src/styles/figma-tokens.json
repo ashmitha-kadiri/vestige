@@ -1,0 +1,120 @@
+{
+  "version": "1.0.0",
+  "name": "VESTIGE Figma Design System Tokens",
+  "description": "Figma Variables & Styles specification for VESTIGE Heritage Archival Platform",
+  "collections": {
+    "primitives": {
+      "color": {
+        "walnut": {
+          "900": { "value": "#1E120A", "type": "color", "description": "Darkest walnut desk base" },
+          "800": { "value": "#2B1B12", "type": "color", "description": "Primary walnut wood" },
+          "700": { "value": "#3A2618", "type": "color", "description": "Dark coffee panel" },
+          "600": { "value": "#5A3B21", "type": "color", "description": "Antique brown leather" },
+          "500": { "value": "#7A542E", "type": "color", "description": "Warm bronze" },
+          "400": { "value": "#8C6E3A", "type": "color", "description": "Light bronze" }
+        },
+        "gold": {
+          "900": { "value": "#826330", "type": "color", "description": "Engraved brass" },
+          "800": { "value": "#A8834A", "type": "color", "description": "Burnished brass" },
+          "700": { "value": "#B8860B", "type": "color", "description": "Antique gold filigree" },
+          "600": { "value": "#C49A45", "type": "color", "description": "Aged gold border" },
+          "500": { "value": "#D4AF37", "type": "color", "description": "Royal gold highlight" },
+          "400": { "value": "#D4AF63", "type": "color", "description": "Soft antique gold" },
+          "300": { "value": "#EEC97A", "type": "color", "description": "Light luminous gold" },
+          "200": { "value": "#F2D89A", "type": "color", "description": "Pale gold leaf" }
+        },
+        "parchment": {
+          "900": { "value": "#CBB998", "type": "color", "description": "Toasted paper edge" },
+          "800": { "value": "#D8C39A", "type": "color", "description": "Deep paper panel" },
+          "700": { "value": "#DEC79E", "type": "color", "description": "Deep aged parchment" },
+          "600": { "value": "#E6D5B8", "type": "color", "description": "Aged parchment base" },
+          "500": { "value": "#EAD9B8", "type": "color", "description": "Card surface" },
+          "400": { "value": "#E8D7B5", "type": "color", "description": "Aged parchment" },
+          "300": { "value": "#F3E6C8", "type": "color", "description": "Soft ivory stationer" },
+          "200": { "value": "#F7ECD7", "type": "color", "description": "Warm medium-burn canvas" },
+          "100": { "value": "#FAF4E8", "type": "color", "description": "Readable cream content surface" },
+          "50": { "value": "#FDF9F0", "type": "color", "description": "Bright paper highlight" }
+        },
+        "ink": {
+          "900": { "value": "#221810", "type": "color", "description": "Archival dark brown-black ink" },
+          "700": { "value": "#52473D", "type": "color", "description": "Faded sepia secondary ink" },
+          "500": { "value": "#766A5D", "type": "color", "description": "Manuscript annotation ink" },
+          "400": { "value": "#8A6A45", "type": "color", "description": "Warm faded sepia" }
+        },
+        "olive": {
+          "900": { "value": "#303825", "type": "color", "description": "Deep forest olive" },
+          "800": { "value": "#465038", "type": "color", "description": "Muted dark olive" },
+          "700": { "value": "#68704A", "type": "color", "description": "Botanical olive badge" },
+          "500": { "value": "#828C5E", "type": "color", "description": "Soft lichen green" }
+        },
+        "rust": {
+          "900": { "value": "#641C10", "type": "color", "description": "Dark wax seal" },
+          "700": { "value": "#8A2E1C", "type": "color", "description": "Sealed wax crimson" },
+          "500": { "value": "#A33B26", "type": "color", "description": "Bright wax red" }
+        }
+      },
+      "spacing": {
+        "0": { "value": "0px", "type": "spacing" },
+        "1": { "value": "4px", "type": "spacing" },
+        "2": { "value": "8px", "type": "spacing" },
+        "3": { "value": "12px", "type": "spacing" },
+        "4": { "value": "16px", "type": "spacing" },
+        "5": { "value": "20px", "type": "spacing" },
+        "6": { "value": "24px", "type": "spacing" },
+        "8": { "value": "32px", "type": "spacing" },
+        "10": { "value": "40px", "type": "spacing" },
+        "12": { "value": "48px", "type": "spacing" },
+        "16": { "value": "64px", "type": "spacing" },
+        "20": { "value": "80px", "type": "spacing" },
+        "24": { "value": "96px", "type": "spacing" }
+      },
+      "radius": {
+        "none": { "value": "0px", "type": "borderRadius" },
+        "xs": { "value": "2px", "type": "borderRadius", "description": "Antique plaque corner" },
+        "sm": { "value": "4px", "type": "borderRadius", "description": "Soft archival corner" },
+        "md": { "value": "6px", "type": "borderRadius", "description": "Card document curve" },
+        "lg": { "value": "8px", "type": "borderRadius", "description": "Panel boundary" },
+        "xl": { "value": "12px", "type": "borderRadius", "description": "Modal container" },
+        "pill": { "value": "9999px", "type": "borderRadius", "description": "Wax seal badge circle" }
+      },
+      "fontFamilies": {
+        "heading": { "value": "'Playfair Display', 'Cinzel', Georgia, serif", "type": "fontFamilies" },
+        "serif": { "value": "'Cinzel', 'Playfair Display', Georgia, serif", "type": "fontFamilies" },
+        "body": { "value": "'Lora', 'Libre Baskerville', Garamond, serif", "type": "fontFamilies" },
+        "ui": { "value": "'Inter', -apple-system, sans-serif", "type": "fontFamilies" },
+        "mono": { "value": "'Courier Prime', monospace", "type": "fontFamilies" }
+      }
+    },
+    "semantic": {
+      "light": {
+        "color": {
+          "bg": {
+            "canvas": { "value": "{primitives.color.parchment.200}", "type": "color" },
+            "surface": { "value": "{primitives.color.parchment.100}", "type": "color" },
+            "surfaceElevated": { "value": "{primitives.color.parchment.500}", "type": "color" },
+            "surfaceDark": { "value": "{primitives.color.walnut.800}", "type": "color" }
+          },
+          "text": {
+            "primary": { "value": "{primitives.color.ink.900}", "type": "color" },
+            "secondary": { "value": "{primitives.color.ink.700}", "type": "color" },
+            "muted": { "value": "{primitives.color.ink.500}", "type": "color" },
+            "brand": { "value": "{primitives.color.gold.700}", "type": "color" },
+            "inverse": { "value": "{primitives.color.parchment.50}", "type": "color" }
+          },
+          "border": {
+            "subtle": { "value": "rgba(138, 106, 69, 0.22)", "type": "color" },
+            "default": { "value": "{primitives.color.gold.600}", "type": "color" },
+            "ornamental": { "value": "{primitives.color.gold.700}", "type": "color" },
+            "focus": { "value": "{primitives.color.gold.500}", "type": "color" }
+          },
+          "status": {
+            "success": { "value": "{primitives.color.olive.800}", "type": "color" },
+            "warning": { "value": "{primitives.color.walnut.500}", "type": "color" },
+            "danger": { "value": "{primitives.color.rust.700}", "type": "color" },
+            "gold": { "value": "{primitives.color.gold.500}", "type": "color" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "info": {
+    "name": "VESTIGE - Admin Portal & Payments API Collection",
+    "_postman_id": "vestige-phase7-admin-payments-api",
+    "description": "Postman API test suite for VESTIGE Phase 7 Admin Operations, Natural Registration Analytics, and Razorpay Payments Layer.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "YOUR_ADMIN_JWT_TOKEN",
+      "type": "string"
+    },
+    {
+      "key": "userToken",
+      "value": "YOUR_USER_JWT_TOKEN",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create Repair Payment Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingId\": \"REPLACE_WITH_VALID_BOOKING_UUID\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/create-order",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "create-order"]
+            }
+          }
+        },
+        {
+          "name": "Verify Payment Signature",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razorpayOrderId\": \"order_123456789\",\n  \"razorpayPaymentId\": \"pay_987654321\",\n  \"razorpaySignature\": \"mock_signature_test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "verify"]
+            }
+          }
+        },
+        {
+          "name": "Get User Payment History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{userToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/my-history",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "my-history"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Management",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "users"]
+            }
+          }
+        },
+        {
+          "name": "Update User Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": false,\n  \"reason\": \"Repeated non-payment for bookings\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/users/REPLACE_WITH_USER_UUID/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "users", "REPLACE_WITH_USER_UUID", "status"]
+            }
+          }
+        },
+        {
+          "name": "Get All Vendors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/vendors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "vendors"]
+            }
+          }
+        },
+        {
+          "name": "Verify Vendor Application",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"APPROVE\",\n  \"rejectionReason\": null\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/vendors/REPLACE_WITH_VENDOR_UUID/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "vendors", "REPLACE_WITH_VENDOR_UUID", "verify"]
+            }
+          }
+        },
+        {
+          "name": "Get All Repairs (Admin Ledger)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/repairs",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "repairs"]
+            }
+          }
+        },
+        {
+          "name": "Get All Recycling (Admin Ledger)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/recycling",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "recycling"]
+            }
+          }
+        },
+        {
+          "name": "Get All Rewards (Admin Ledger)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/rewards",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "rewards"]
+            }
+          }
+        },
+        {
+          "name": "Get Payment Financial Metrics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/payments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "payments"]
+            }
+          }
+        },
+        {
+          "name": "Get Registration Velocity Activity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/registration-activity?range=6m",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "registration-activity"],
+              "query": [
+                {
+                  "key": "range",
+                  "value": "6m"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Administrative Audit Trail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/actions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "actions"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
