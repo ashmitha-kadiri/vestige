@@ -4,7 +4,7 @@
  * JWT token injection, and concurrent GET request deduplication.
  */
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://vestige-owfd.onrender.com/api';
 const TOKEN_KEY = 'vestige_auth_token';
 
 // In-flight GET request cache to prevent duplicate simultaneous network requests
